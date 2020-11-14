@@ -48,17 +48,18 @@
               <div class="full-width text-body1 margine2">
                 Кейс состояние: {{stageCase}}
               </div>
-              <q-btn color="secondary" label="История" @click="ClickBtmHistory" v-model="historyBtm"/>
+              <q-btn color="secondary" label="История" @click="ClickBtmHistory"/>
             </div>
-            <div class="full-width text-body1 margine2" v-model="history">
-              <span v-for="step in steps" :key="step.stageH"> {{timeHistH}}:{{timeHistM}} - {{step.stageH}} <br> </span>
+            <div class="full-width text-body1 margine2">
+              <span v-for="step in steps" :key="step.stageH"> {{timeHistH}}:{{timeHistM=timeHistM + a}} - {{step.stageH}} <br> </span>
             </div>
           </div>step.stageH
         </div>
       </div>
       <div class="col bg-blue">
         <div class="full-width text-subtitle2 text-weight-bold text-center">Ваша доставка</div>
-        <div class="q-pa-md">
+        <div class="q-pa
+        -md">
           <q-linear-progress rounded size="15px" :value="progress" color="warning" class="q-mt-20" />
         </div>
       </div>
@@ -104,7 +105,7 @@ export default {
         { stageH: 'Кейс открыт' },
         { stageH: 'Товар доставлен' }
       ],
-      a: 0
+      a: 2
     }
   },
 
