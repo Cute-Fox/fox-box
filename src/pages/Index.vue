@@ -45,6 +45,13 @@
               <div class="full-width text-body1 margine2">
                 Получатель: {{name}} {{sorname}}
               </div>
+              <div class="full-width text-body1 margine2">
+                Кейс состояние: {{stageCase}}
+              </div>
+              <q-btn color="secondary" label="История" @click="ClickBtmHistory" v-model="historyBtm"/>
+            </div>
+            <div class="full-width text-body1 margine2">
+              <span v-for="<varPint0 in varPoint"> {{ varPoint0 }} </span>
             </div>
           </div>
         </div>
@@ -56,20 +63,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="leftMenu">
-      <q-drawer show-if-above v-model="left" side="left" bordered>
-        <div class="profile">
-          <div id="avatar">
-            <q-avatar rounded size="65px" font-size="42px" color="red" icon="F" text-color="white"/>
-          </div>
-        </div>
-        <div class="text-subtitle2 text-weight-bold text-center">Ваша доставка</div>
-          <div class="q-pa-md">
-            <q-linear-progress rounded size="15px" :value="progress" color="warning" class="q-mt-20" />
-          </div>
-      </q-drawer>
-    </div>
- -->
 
     <!-- Таня - пишешет дизайн основного меню
     Катя - ищещь во всех файлах упомнание Quasar (То что выводится) -->
@@ -92,12 +85,16 @@ export default {
       icon: false,
       senderAdres: 'OOO фиг знает где. Может на камчатке',
       timeSend: '16:44',
-      senderGroupPost: 'ООО McDonalds пожри и будь жирным'
+      senderGroupPost: 'ООО McDonalds пожри и будь жирным',
+      stageCase: 'Закрыт',
+      varPoint: 10
     }
   },
   methods: {
     bottomClick1 () {
       this.icon = true
+    },
+    ClickBtmHistory () {
     }
   }
 }
