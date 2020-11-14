@@ -50,10 +50,10 @@
               </div>
               <q-btn color="secondary" label="История" @click="ClickBtmHistory" v-model="historyBtm"/>
             </div>
-            <div class="full-width text-body1 margine2">
-              <span v-for="varPint0 in varPoint" :key="varPint0"> {{ varPint0 }} </span>
+            <div class="full-width text-body1 margine2" v-model="history">
+              <span v-for="step in steps" :key="step.stageH"> {{timeHistH}}:{{timeHistM}} - {{step.stageH}} <br> </span>
             </div>
-          </div>
+          </div>step.stageH
         </div>
       </div>
       <div class="col bg-blue">
@@ -74,7 +74,7 @@
 export default {
   data () {
     return {
-      progress: 0.84,
+      progress: 0.49,
       left: false,
       name: 'Ник',
       sorname: 'Уайлд',
@@ -87,15 +87,33 @@ export default {
       timeSend: '16:44',
       senderGroupPost: 'ООО McDonalds пожри и будь жирным',
       stageCase: 'Закрыт',
-      varPoint: 10,
-      historyBtm: true
+      varPoint: 4,
+      historyBtm: true,
+      num1: 1,
+      timeHistH: 16,
+      timeHistM: 42,
+      history: false,
+      steps: [
+        { stageH: 'Заказ уакован' },
+        { stageH: 'Доставщик прибыл' },
+        { stageH: 'Коробка закрыта' },
+        { stageH: 'Курьер взял заказ в доставку' },
+        { stageH: 'Курье преодолел половину пути' },
+        { stageH: 'Курьер у вашего дома' },
+        { stageH: 'Курьер прибыл' },
+        { stageH: 'Кейс открыт' },
+        { stageH: 'Товар доставлен' }
+      ],
+      a: 0
     }
   },
+
   methods: {
     bottomClick1 () {
       this.icon = true
     },
     ClickBtmHistory () {
+      this.history = true
     }
   }
 }
