@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fFf">
 
     <div class="fit row wrap justify-start items-start content-start">
-      <div class="col-3 bg-green">
+      <div class="col-3">
         <div class="row">
           <div class="ava1">
             <q-avatar rounded size="65px" font-size="42px" color="red" icon="F" text-color="white"/>
@@ -87,7 +87,8 @@ export default {
       timeSend: '16:44',
       senderGroupPost: 'ООО McDonalds пожри и будь жирным',
       stageCase: 'Закрыт',
-      varPoint: 10
+      varPoint: 10,
+      historyBtm: true
     }
   },
   methods: {
