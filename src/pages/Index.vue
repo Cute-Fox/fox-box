@@ -51,7 +51,7 @@
               <q-btn color="secondary" label="История" @click="ClickBtmHistory" v-model="historyBtm"/>
             </div>
             <div class="full-width text-body1 margine2">
-              <span v-for="<varPint0 in varPoint"> {{ varPoint0 }} </span>
+              <span v-for="varPint0 in varPoint" :key="varPint0"> {{ varPint0 }} </span>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
       </div>
     </div>
 
-    <!-- Таня - пишешет дизайн основного меню
+    <!-- Таня - пишешет дизайн основного меню 000000000000000000000000000
     Катя - ищещь во всех файлах упомнание Quasar (То что выводится) -->
 
   </q-layout>
