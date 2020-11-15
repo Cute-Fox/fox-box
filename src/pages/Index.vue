@@ -51,16 +51,15 @@
               <div class="full-width text-body1 margine2">
                 Кейс состояние: {{stageCase}}
               </div>
-              <q-btn color="secondary" label="История" @click="ClickBtmHistory"/>
             </div>
             <div class="full-width text-body1 margine2">
-              <q-btn v-show="!isHistory" color="secondary" label="История" @click="isHistory = true"/>
+              <q-btn class="margine" outline rounded v-show="!isHistory" color="secondary" label="История" @click="isHistory = true"/>
               <span v-show="isHistory" v-for="(step, index) in steps" :key="step.id">
                 <div v-show="index < 4" class="full-width text-weight-medium">
                   {{ step.timeHistH }}:{{ step.timeHistM }} - {{ step.stageH }} <br>
                 </div>
               </span>
-              <q-btn v-show="isHistory" color="secondary" label="Свернутьр" @click="isHistory = false"/>
+              <q-btn outline rounded class="margine" v-show="isHistory" color="secondary" label="Свернуть" @click="isHistory = false"/>
             </div>
           </div>
         </div>
@@ -122,15 +121,50 @@ export default {
           id: 1,
           stageH: 'Доставщик прибыл',
           timeHistH: 16,
-          timeHistM: 42
-        }//,
-        // { stageH: 'Коробка закрыта' },
-        // { stageH: 'Курьер взял заказ в доставку' },
-        // { stageH: 'Курьер преодолел половину пути' },
-        // { stageH: 'Курьер у вашего дома' },
-        // { stageH: 'Курьер прибыл' },
-        // { stageH: 'Кейс открыт' },
-        // { stageH: 'Товар доставлен' }
+          timeHistM: 43
+        },
+        {
+          id: 2,
+          stageH: 'Коробка закрыта',
+          timeHistH: 16,
+          timeHistM: 43
+        },
+        {
+          id: 3,
+          stageH: 'Курьер взял заказ в доставку',
+          timeHistH: 16,
+          timeHistM: 44
+        },
+        {
+          id: 4,
+          stageH: 'Курьер преодолел половину пути',
+          timeHistH: 16,
+          timeHistM: 59
+        },
+        {
+          id: 5,
+          stageH: 'Курьер у вашего дома',
+          timeHistH: 17,
+          timeHistM: 15
+        },
+        {
+          id: 6,
+          stageH: 'Курьер прибыл',
+          timeHistH: 17,
+          timeHistM: 20
+        },
+        {
+          id: 7,
+          stageH: 'Кейс открыт',
+          timeHistH: 17,
+          timeHistM: 21
+        },
+        {
+          id: 8,
+          stageH: 'Товар доставлен',
+          timeHistH: 17,
+          timeHistM: 22
+        }
       ]
     }
   },
