@@ -2,13 +2,16 @@
   <q-layout view="hHh lpR fFf">
 
     <div class="fit row wrap justify-start items-start content-start">
-      <div class="col-3">
+      <div class="col-3 full-heignt" >
         <div class="row">
           <div class="ava1">
             <q-avatar rounded size="65px" font-size="42px" color="red" icon="F" text-color="white"/>
           </div>
           <div class="text-subtitle2 text-weight-bold margine">{{name}} <br> {{sorname}} </div>
           <div class="text-h6 text-weight-bold margine2"> {{balance}} баллов</div>
+        </div>
+        <div class="full-width text-body1 text-center">
+              <hr>
         </div>
         <div class="row margine">
           <div class="col">
@@ -51,30 +54,44 @@
               <q-btn color="secondary" label="История" @click="ClickBtmHistory"/>
             </div>
             <div class="full-width text-body1 margine2">
-              <span v-for="step in steps" :key="step.stageH"> {{timeHistH}}:{{timeHistM=timeHistM + a}} - {{step.stageH}} <br> </span>
+              <q-btn v-show="!isHistory" color="secondary" label="История" @click="isHistory = true"/>
+              <span v-show="isHistory" v-for="(step, index) in steps" :key="step.id">
+                <div v-show="index < 4" class="full-width text-weight-medium">
+                  {{ step.timeHistH }}:{{ step.timeHistM }} - {{ step.stageH }} <br>
+                </div>
+              </span>
+              <q-btn v-show="isHistory" color="secondary" label="Свернутьр" @click="isHistory = false"/>
             </div>
-          </div>step.stageH
+          </div>
         </div>
       </div>
       <div class="col bg-blue">
-        <div class="full-width text-subtitle2 text-weight-bold text-center">Ваша доставка</div>
-        <div class="q-pa
-        -md">
-          <q-linear-progress rounded size="15px" :value="progress" color="warning" class="q-mt-20" />
+        <div class="full-width text-h6 text-weight-bold text-left label1">&nbsp;&nbsp;Ваш заказ</div>
+        <div class="row">
+          <div class="col-4">
+            <!-- Вставляю первое изображение товара (кола) -->
+            <q-img class="rounded-borders imgMarket"
+              src="https://mcdonalds.ru/resize/500x500//upload/iblock/330/7020_cola_04_1500x1500_brand_min.png"
+              :ratio="1"
+              style="height: 200px; width: 200px; background-color: #FFFFFF;"
+            />
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Таня - пишешет дизайн основного меню 000000000000000000000000000
+    <!-- Таня - пишешет дизайн основного меню
     Катя - ищещь во всех файлах упомнание Quasar (То что выводится) -->
 
   </q-layout>
 </template>
 
 <script>
+const MINUTES_ADD = 2
 export default {
   data () {
     return {
+      isHistory: false,
       progress: 0.49,
       left: false,
       name: 'Ник',
@@ -91,22 +108,38 @@ export default {
       varPoint: 4,
       historyBtm: true,
       num1: 1,
-      timeHistH: 16,
-      timeHistM: 42,
+      // timeHistH: 16,
+      // timeHistM: 42,
       history: false,
       steps: [
-        { stageH: 'Заказ уакован' },
-        { stageH: 'Доставщик прибыл' },
-        { stageH: 'Коробка закрыта' },
-        { stageH: 'Курьер взял заказ в доставку' },
-        { stageH: 'Курье преодолел половину пути' },
-        { stageH: 'Курьер у вашего дома' },
-        { stageH: 'Курьер прибыл' },
-        { stageH: 'Кейс открыт' },
-        { stageH: 'Товар доставлен' }
-      ],
-      a: 2
+        {
+          id: 0,
+          stageH: 'Заказ уакован',
+          timeHistH: 16,
+          timeHistM: 41
+        },
+        {
+          id: 1,
+          stageH: 'Доставщик прибыл',
+          timeHistH: 16,
+          timeHistM: 42
+        }//,
+        // { stageH: 'Коробка закрыта' },
+        // { stageH: 'Курьер взял заказ в доставку' },
+        // { stageH: 'Курьер преодолел половину пути' },
+        // { stageH: 'Курьер у вашего дома' },
+        // { stageH: 'Курьер прибыл' },
+        // { stageH: 'Кейс открыт' },
+        // { stageH: 'Товар доставлен' }
+      ]
     }
+  },
+
+  mounted () {
+    this.steps = this.steps.map((step) => {
+      step.timeHistM = step.timeHistM + MINUTES_ADD
+      return step
+    })
   },
 
   methods: {
@@ -135,5 +168,8 @@ export default {
   }
   .margine2 {
     margin: 28px;
+  }
+  .label1 {
+    margin-top: 50px;
   }
 </style>
