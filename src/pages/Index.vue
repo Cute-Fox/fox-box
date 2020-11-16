@@ -2,15 +2,15 @@
   <q-layout view="hHh lpR fFf">
 
     <div class="fit row wrap justify-start items-start content-start">
-      <div class="col-3 full-heignt" >
+      <div class="col-3 full-heignt bg-green-2" >
         <div class="row">
           <div class="ava1">
             <q-avatar rounded size="65px" font-size="42px" color="red" icon="F" text-color="white"/>
           </div>
           <div class="text-subtitle2 text-weight-bold margine">{{name}} <br> {{sorname}} </div>
-          <div class="text-h6 text-weight-bold margine2"> {{balance}} баллов</div>
+          <div class="text-body2 margine2"> {{balance}} баллов</div>
         </div>
-        <div class="full-width text-body1 text-center">
+        <div class="full-width text-caption text-center">
               <hr>
         </div>
         <div class="row margine">
@@ -21,66 +21,230 @@
             <div class="q-pa-md">
               <q-linear-progress rounded size="10px" :value="progress" color="purple" class="q-mt-20" />
             </div>
-            <div class="full-width text-body1 margine">
+            <div class="full-width text-caption margine">
               Осталось: {{timeM}} мин <br> Состояние: {{Stage}}
             </div>
-            <div class="full-width text-body1 margine2">
+            <div class="full-width text-caption margine2">
               Отправитель: {{sender}}
               <q-btn flat color="primary" label="Подробнее" @click="bottomClick1" />
               <q-dialog v-model="icon">
                 <q-card>
                   <q-card-section class="row items-center q-pb-none">
-                    <div class="text-h4">Об отправителе</div>
+                    <div class="text-h6">Об отправителе</div>
                     <q-space />
                     <q-btn icon="close" flat round dense v-close-popup />
                   </q-card-section>
 
-                  <q-card-section class="text-subtitle2">
+                  <q-card-section class="text-caption">
                     Отправитель: {{sender}} <br>
                     Адресс: {{senderAdres}} <br>
                     Отправлено в {{timeSend}}
                   </q-card-section>
-                  <q-card-section class="text-body3">
+                  <q-card-section class="text-caption">
                     {{senderGroupPost}}
                   </q-card-section>
                 </q-card>
               </q-dialog>
-              <div class="full-width text-body1 margine2">
+              <div class="full-width text-caption margine2">
                 Получатель: {{name}} {{sorname}}
               </div>
-              <div class="full-width text-body1 margine2">
+              <div class="full-width text-caption margine2">
                 Кейс состояние: {{stageCase}}
               </div>
             </div>
-            <div class="full-width text-body1 margine2">
-              <q-btn class="margine" outline rounded v-show="!isHistory" color="secondary" label="История" @click="isHistory = true"/>
+            <div class="full-width text-caption margine2">
+              <q-btn flat size="14px" v-show="!isHistory" color="secondary" label="История действий с заказом" @click="isHistory = true"/>
               <span v-show="isHistory" v-for="(step, index) in steps" :key="step.id">
                 <div v-show="index < 4" class="full-width text-weight-medium">
                   {{ step.timeHistH }}:{{ step.timeHistM }} - {{ step.stageH }} <br>
                 </div>
               </span>
-              <q-btn outline rounded class="margine" v-show="isHistory" color="secondary" label="Свернуть" @click="isHistory = false"/>
+              <q-btn size="14px" flat v-show="isHistory" color="secondary" label="Свернуть" @click="isHistory = false"/>
             </div>
           </div>
         </div>
       </div>
-      <div class="col bg-blue">
-        <div class="full-width text-h6 text-weight-bold text-left label1">&nbsp;&nbsp;Ваш заказ</div>
+      <div class="col bg-purple-2">
+        <div class="full-width text-h5 text-weight-bold text-left label1 text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ваш заказ</div>
         <div class="row">
           <div class="col-4">
-            <!-- Вставляю первое изображение товара (кола) -->
-            <q-img class="rounded-borders imgMarket"
-              src="https://mcdonalds.ru/resize/500x500//upload/iblock/330/7020_cola_04_1500x1500_brand_min.png"
-              :ratio="1"
-              style="height: 200px; width: 200px; background-color: #FFFFFF;"
-            />
+            <div class="q-pa-md row items-start q-gutter-md margine3">
+              <q-card class="my-card" flat bordered>
+                <q-card-section horizontal>
+                  <q-card-section class="cardCola">
+                    <div class="text-h5">
+                      Итого: {{sumCola}} руб<hr>
+                    </div>
+                    <div class="text-size1">
+                    Coca-cola 0,25 мл <br>
+                    </div>
+                    <div>
+                      <q-btn
+                        padding="1px 1px"
+                        color="negative"
+                        icon="-"
+                        @click="ClickMnsBtm1"
+                      />
+                      {{numCola}} шт
+                      <q-btn
+                        padding="1px 1px"
+                        color="positive"
+                        icon="+"
+                        @click="ClickPlsBtm1"
+                      />
+                       - {{priceCola}} руб <br>
+                    </div>
+                    Уточнение: Coca-cola стандарт. в пластиковом стаканчике (0,25 мл) <br>
+                    Артикул: 00124712849 <br>
+                    Поставщик в магазин: ООО Coca Cola company <br>
+                    Отправитель: McDonalds
+                  </q-card-section>
+
+                  <div class="imgCola">
+                    <q-img
+                      class="col-5"
+                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/330/7020_cola_04_1500x1500_brand_min.png"
+                    />
+                  </div>
+                </q-card-section>
+              </q-card>
+            </div>
+
+            <div class="q-pa-md row items-start q-gutter-md margine3">
+              <q-card class="my-card" flat bordered>
+                <q-card-section horizontal>
+                  <q-card-section class="cardCola">
+                    <div class="text-h5">
+                      Итого: {{sumNag}} руб<hr>
+                    </div>
+                    <div class="text-size1">
+                    Чикен Макнаггетс 20 шт <br>
+                    </div>
+                    <div>
+                      <q-btn
+                        padding="1px 1px"
+                        color="negative"
+                        icon="-"
+                        @click="ClickMnsBtm2"
+                      />
+                      {{numNag}} упак.
+                      <q-btn
+                        padding="1px 1px"
+                        color="positive"
+                        icon="+"
+                        @click="ClickPlsBtm2"
+                      />
+                      - {{priceNag}} руб <br>
+                    </div>
+                    Уточнение: Чикен Макнаггетс 20 шт. в картоной коробке <br>
+                    Артикул: 10194452245 <br>
+                    Поставщик в магазин: ООО McDonalds <br>
+                    Отправитель: McDonalds
+                  </q-card-section>
+
+                  <div class="imgNug">
+                    <q-img
+                      class="col-5"
+                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/13a/2353_Chicken_McNuggets_20p_in_box_1500x1500_min.png"
+                    />
+                  </div>
+                </q-card-section>
+              </q-card>
+            </div>
+
+            <div class="q-pa-md row items-start q-gutter-md margine3">
+              <q-card class="my-card" flat bordered>
+                <q-card-section horizontal>
+                  <q-card-section class="cardCola">
+                    <div class="text-h5">
+                      Итого: {{sumIceCream}} руб<hr>
+                    </div>
+                    <div class="text-size1">
+                    Coca-cola 0,25 мл <br>
+                    </div>
+                    <div>
+                      <q-btn
+                        padding="1px 1px"
+                        color="negative"
+                        icon="-"
+                        @click="ClickMnsBtm3"
+                      />
+                      {{numIceCream}} упак.
+                      <q-btn
+                        padding="1px 1px"
+                        color="positive"
+                        icon="+"
+                        @click="ClickPlsBtm3"
+                      />
+                       - {{priceIceCream}} руб <br>
+                    </div>
+                    Уточнение: Макфлурри Де Люкс Клубнично-Шоколадное<br>
+                    Артикул: 90574211028 <br>
+                    Поставщик в магазин: ООО McDonalds<br>
+                    Отправитель: McDonalds
+                  </q-card-section>
+
+                  <div class="imgIceCream">
+                    <q-img
+                      class="col-5"
+                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/5ed/Makflurri-De-Lyuks-shokoladno_klubnichnoe.png"
+                    />
+                  </div>
+                </q-card-section>
+              </q-card>
+            </div>
+
+            <div class="q-pa-md row items-start q-gutter-md margine3">
+              <q-card class="my-card" flat bordered>
+                <q-card-section horizontal>
+                  <q-card-section class="cardCola">
+                    <div class="text-h5">
+                      Итого: {{sumBug}} руб<hr>
+                    </div>
+                    <div class="text-size1">
+                    Coca-cola 0,25 мл <br>
+                    </div>
+                    <div>
+                      <q-btn
+                        padding="1px 1px"
+                        color="negative"
+                        icon="-"
+                        @click="ClickMnsBtm4"
+                      />
+                      {{numBug}} шт.
+                      <q-btn
+                        padding="1px 1px"
+                        color="positive"
+                        icon="+"
+                        @click="ClickPlsBtm4"
+                      />
+                       - {{priceBug}} руб <br>
+                    </div>
+                    Уточнение: Биг Тейсти Три Сыра <br>
+                    Артикул: 30188805199 <br>
+                    Поставщик в магазин: ООО McDonalds <br>
+                    Отправитель: McDonalds
+                  </q-card-section>
+
+                  <div class="imgIceCream">
+                    <q-img
+                      class="col-5"
+                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/d15/0000_BT_3Cheese_1500x1500_min.png"
+                    />
+                  </div>
+                </q-card-section>
+              </q-card>
+              <div class="text-center text-h6 full-width">
+                К оплате {{sumItog}} руб
+              </div>
+              <div class="text-center text-body2 full-width col-5">
+                Балов будет засчитано - {{ballPls}} бал(ов)
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Таня - пишешет дизайн основного меню
-    Катя - ищещь во всех файлах упомнание Quasar (То что выводится) -->
 
   </q-layout>
 </template>
@@ -90,6 +254,14 @@ const MINUTES_ADD = 2
 export default {
   data () {
     return {
+      numCola: 2,
+      priceCola: 100,
+      numBug: 8,
+      priceBug: 279,
+      numNag: 1,
+      priceNag: 297,
+      numIceCream: 4,
+      priceIceCream: 99,
       isHistory: false,
       progress: 0.49,
       left: false,
@@ -169,6 +341,27 @@ export default {
     }
   },
 
+  computed: {
+    sumCola () {
+      return this.numCola * this.priceCola
+    },
+    sumNag () {
+      return this.numNag * this.priceNag
+    },
+    sumIceCream () {
+      return this.numIceCream * this.priceIceCream
+    },
+    sumBug () {
+      return this.numBug * this.priceBug
+    },
+    sumItog () {
+      return this.sumCola + this.sumNag + this.sumIceCream + this.sumBug
+    },
+    ballPls () {
+      return this.sumItog / 100 * 5
+    }
+  },
+
   mounted () {
     this.steps = this.steps.map((step) => {
       step.timeHistM = step.timeHistM + MINUTES_ADD
@@ -182,6 +375,30 @@ export default {
     },
     ClickBtmHistory () {
       this.history = true
+    },
+    ClickPlsBtm1 () {
+      this.numCola = this.numCola + 1
+    },
+    ClickMnsBtm1 () {
+      this.numCola = this.numCola - 1
+    },
+    ClickPlsBtm2 () {
+      this.numNag = this.numNag + 1
+    },
+    ClickMnsBtm2 () {
+      this.numNag = this.numNag - 1
+    },
+    ClickPlsBtm3 () {
+      this.numIceCream = this.numIceCream + 1
+    },
+    ClickMnsBtm3 () {
+      this.numIceCream = this.numIceCream - 1
+    },
+    ClickPlsBtm4 () {
+      this.numBug = this.numBug + 1
+    },
+    ClickMnsBtm4 () {
+      this.numBug = this.numBug - 1
     }
   }
 }
@@ -205,5 +422,28 @@ export default {
   }
   .label1 {
     margin-top: 50px;
+  }
+  .cardCola {
+    height: 300px;
+    width: 600px;
+  }
+  .imgCola {
+    height: 75px;
+    width: 350px;
+  }
+  .imgNug {
+    height: 95px;
+    width: 385px;
+  }
+  .imgIceCream {
+    height: 95px;
+    width: 385px;
+  }
+  .size1 {
+    height: 100px;
+    width: 100px;
+  }
+  .margine3 {
+    margin: 5px;
   }
 </style>
