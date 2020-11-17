@@ -1,6 +1,17 @@
 <template>
   <q-layout view="hHh lpR fFf">
-
+    <q-bar class="bg-black text-white">
+      <!-- <div class="cursor-pointer" @click="btmUpMenuProfile" >Профиль</div>
+      <div class="cursor-pointer" @click="btmUpMenuKur" >Доставщику</div> -->
+      <div class="cursor-pointer gt-xs">
+        Отправить
+      </div>
+      <!-- <div class="cursor-pointer" @click="btmUpMenuHelp">Помощь</div> -->
+      <q-space />
+      <q-btn dense flat icon="minimize" @click="btnMinimizeClick"/>
+      <q-btn dense flat icon="crop_square" />
+      <q-btn dense flat icon="close" />
+    </q-bar>
     <div class="fit row wrap justify-start items-start content-start">
       <div class="col-3 full-heignt bg-green-2" >
         <div class="row">
@@ -68,172 +79,14 @@
         <div class="full-width text-h5 text-weight-bold text-left label1 text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ваш заказ</div>
         <div class="row">
           <div class="col-4">
-            <div class="q-pa-md row items-start q-gutter-md margine3">
-              <q-card class="my-card" flat bordered>
-                <q-card-section horizontal>
-                  <q-card-section class="cardCola">
-                    <div class="text-h5">
-                      Итого: {{sumCola}} руб<hr>
-                    </div>
-                    <div class="text-size1">
-                    Coca-cola 0,25 мл <br>
-                    </div>
-                    <div>
-                      <q-btn
-                        padding="1px 1px"
-                        color="negative"
-                        icon="-"
-                        @click="ClickMnsBtm1"
-                      />
-                      {{numCola}} шт
-                      <q-btn
-                        padding="1px 1px"
-                        color="positive"
-                        icon="+"
-                        @click="ClickPlsBtm1"
-                      />
-                       - {{priceCola}} руб <br>
-                    </div>
-                    Уточнение: Coca-cola стандарт. в пластиковом стаканчике (0,25 мл) <br>
-                    Артикул: 00124712849 <br>
-                    Поставщик в магазин: ООО Coca Cola company <br>
-                    Отправитель: McDonalds
-                  </q-card-section>
-
-                  <div class="imgCola">
-                    <q-img
-                      class="col-5"
-                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/330/7020_cola_04_1500x1500_brand_min.png"
-                    />
-                  </div>
-                </q-card-section>
-              </q-card>
-            </div>
+            <Product
+              v-for="product in products"
+              :key="product.articul"
+              v-bind="product"
+              @priceChange="product.totalPrice = $event"
+            />
 
             <div class="q-pa-md row items-start q-gutter-md margine3">
-              <q-card class="my-card" flat bordered>
-                <q-card-section horizontal>
-                  <q-card-section class="cardCola">
-                    <div class="text-h5">
-                      Итого: {{sumNag}} руб<hr>
-                    </div>
-                    <div class="text-size1">
-                    Чикен Макнаггетс 20 шт <br>
-                    </div>
-                    <div>
-                      <q-btn
-                        padding="1px 1px"
-                        color="negative"
-                        icon="-"
-                        @click="ClickMnsBtm2"
-                      />
-                      {{numNag}} упак.
-                      <q-btn
-                        padding="1px 1px"
-                        color="positive"
-                        icon="+"
-                        @click="ClickPlsBtm2"
-                      />
-                      - {{priceNag}} руб <br>
-                    </div>
-                    Уточнение: Чикен Макнаггетс 20 шт. в картоной коробке <br>
-                    Артикул: 10194452245 <br>
-                    Поставщик в магазин: ООО McDonalds <br>
-                    Отправитель: McDonalds
-                  </q-card-section>
-
-                  <div class="imgNug">
-                    <q-img
-                      class="col-5"
-                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/13a/2353_Chicken_McNuggets_20p_in_box_1500x1500_min.png"
-                    />
-                  </div>
-                </q-card-section>
-              </q-card>
-            </div>
-
-            <div class="q-pa-md row items-start q-gutter-md margine3">
-              <q-card class="my-card" flat bordered>
-                <q-card-section horizontal>
-                  <q-card-section class="cardCola">
-                    <div class="text-h5">
-                      Итого: {{sumIceCream}} руб<hr>
-                    </div>
-                    <div class="text-size1">
-                    Coca-cola 0,25 мл <br>
-                    </div>
-                    <div>
-                      <q-btn
-                        padding="1px 1px"
-                        color="negative"
-                        icon="-"
-                        @click="ClickMnsBtm3"
-                      />
-                      {{numIceCream}} упак.
-                      <q-btn
-                        padding="1px 1px"
-                        color="positive"
-                        icon="+"
-                        @click="ClickPlsBtm3"
-                      />
-                       - {{priceIceCream}} руб <br>
-                    </div>
-                    Уточнение: Макфлурри Де Люкс Клубнично-Шоколадное<br>
-                    Артикул: 90574211028 <br>
-                    Поставщик в магазин: ООО McDonalds<br>
-                    Отправитель: McDonalds
-                  </q-card-section>
-
-                  <div class="imgIceCream">
-                    <q-img
-                      class="col-5"
-                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/5ed/Makflurri-De-Lyuks-shokoladno_klubnichnoe.png"
-                    />
-                  </div>
-                </q-card-section>
-              </q-card>
-            </div>
-
-            <div class="q-pa-md row items-start q-gutter-md margine3">
-              <q-card class="my-card" flat bordered>
-                <q-card-section horizontal>
-                  <q-card-section class="cardCola">
-                    <div class="text-h5">
-                      Итого: {{sumBug}} руб<hr>
-                    </div>
-                    <div class="text-size1">
-                    Coca-cola 0,25 мл <br>
-                    </div>
-                    <div>
-                      <q-btn
-                        padding="1px 1px"
-                        color="negative"
-                        icon="-"
-                        @click="ClickMnsBtm4"
-                      />
-                      {{numBug}} шт.
-                      <q-btn
-                        padding="1px 1px"
-                        color="positive"
-                        icon="+"
-                        @click="ClickPlsBtm4"
-                      />
-                       - {{priceBug}} руб <br>
-                    </div>
-                    Уточнение: Биг Тейсти Три Сыра <br>
-                    Артикул: 30188805199 <br>
-                    Поставщик в магазин: ООО McDonalds <br>
-                    Отправитель: McDonalds
-                  </q-card-section>
-
-                  <div class="imgIceCream">
-                    <q-img
-                      class="col-5"
-                      src="https://mcdonalds.ru/resize/500x500//upload/iblock/d15/0000_BT_3Cheese_1500x1500_min.png"
-                    />
-                  </div>
-                </q-card-section>
-              </q-card>
               <div class="text-center text-h6 full-width">
                 К оплате {{sumItog}} руб
               </div>
@@ -250,18 +103,56 @@
 </template>
 
 <script>
+import Product from 'components/ProductLine.vue'
 const MINUTES_ADD = 2
 export default {
+  components: {
+    Product
+  },
   data () {
     return {
-      numCola: 2,
-      priceCola: 100,
-      numBug: 8,
-      priceBug: 279,
-      numNag: 1,
-      priceNag: 297,
-      numIceCream: 4,
-      priceIceCream: 99,
+      products: [
+        {
+          name: 'Coca-cola 0,25 мл',
+          price: 100,
+          description: 'Coca-cola стандарт. в пластиковом стаканчике (0,25 мл)',
+          articul: '00124712849',
+          manufacture: 'ООО Coca Cola company',
+          totalPrice: 0,
+          sender: 'McDonalds',
+          img: 'https://mcdonalds.ru/resize/500x500//upload/iblock/330/7020_cola_04_1500x1500_brand_min.png'
+        },
+        {
+          name: 'Чикен Макнаггетс 20 шт',
+          price: 297,
+          description: 'Чикен Макнаггетс 20 шт. в картоной коробке',
+          articul: '10194452245',
+          manufacture: 'Поставщик в магазин: ООО McDonalds',
+          totalPrice: 0,
+          sender: 'McDonalds',
+          img: 'https://mcdonalds.ru/resize/500x500//upload/iblock/13a/2353_Chicken_McNuggets_20p_in_box_1500x1500_min.png'
+        },
+        {
+          name: 'Макфлурри Де Люкс Клубнично-Шоколадное',
+          price: 99,
+          description: 'Макфлурри Де Люкс Клубнично-Шоколадное',
+          articul: '90574211028',
+          manufacture: 'Поставщик в магазин: ООО McDonalds',
+          totalPrice: 0,
+          sender: 'McDonalds',
+          img: 'https://mcdonalds.ru/resize/500x500//upload/iblock/5ed/Makflurri-De-Lyuks-shokoladno_klubnichnoe.png'
+        },
+        {
+          name: 'Биг Тейсти Три Сыра',
+          price: 297,
+          description: 'Биг Тейсти Три Сыра',
+          articul: '30188805199',
+          manufacture: 'Поставщик в магазин: ООО McDonalds',
+          totalPrice: 0,
+          sender: 'McDonalds',
+          img: 'https://mcdonalds.ru/resize/500x500//upload/iblock/d15/0000_BT_3Cheese_1500x1500_min.png'
+        }
+      ],
       isHistory: false,
       progress: 0.49,
       left: false,
@@ -355,10 +246,12 @@ export default {
       return this.numBug * this.priceBug
     },
     sumItog () {
-      return this.sumCola + this.sumNag + this.sumIceCream + this.sumBug
+      let sum = 0
+      this.products.forEach((product) => { sum += product.totalPrice })
+      return sum
     },
     ballPls () {
-      return this.sumItog / 100 * 5
+      return Math.round(this.sumItog / 100 * 5)
     }
   },
 
@@ -370,6 +263,9 @@ export default {
   },
 
   methods: {
+    btnMinimizeClick () {
+      console.log('asdasd')
+    },
     bottomClick1 () {
       this.icon = true
     },
