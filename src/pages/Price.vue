@@ -16,9 +16,9 @@
       <div class="col-3 full-heignt bg-green-2" >
         <div class="row">
           <div class="ava1">
-            <q-avatar rounded size="65px" font-size="42px" color="red" icon="F" text-color="white"/>
+            <q-avatar rounded size="10vh" font-size="5vh" color="red" icon="F" text-color="white"/>
           </div>
-          <div class="text-subtitle2 text-weight-bold margine">{{name}} <br> {{sorname}} </div>
+          <div class="textsz2 text-weight-bold margine">{{name}} <br> {{sorname}} </div>
           <div class="text-body2 margine2"> {{balance}} баллов</div>
         </div>
         <div class="full-width text-caption text-center">
@@ -26,57 +26,57 @@
         </div>
         <div class="row margine">
           <div class="col">
-            <div class="full-width text-body1 text-center">
+            <div class="full-width textsz1 text-center">
               Ваша доставка
             </div>
             <div class="q-pa-md">
-              <q-linear-progress rounded size="10px" :value="progress" color="purple" class="q-mt-20" />
+              <q-linear-progress rounded size="2vh" :value="progress" color="purple" class="q-mt-20" />
             </div>
-            <div class="full-width text-caption margine">
+            <div class="full-width textsz2 text-caption margine">
               Осталось: {{timeM}} мин <br> Состояние: {{Stage}}
             </div>
-            <div class="full-width text-caption margine2">
+            <div class="full-width textsz2 text-caption margine2">
               Отправитель: {{sender}}
-              <q-btn flat color="primary" label="Подробнее" @click="bottomClick1" />
+              <q-btn flat color="primary" size="1.9vh" label="Подробнее" @click="bottomClick1" />
               <q-dialog v-model="icon">
                 <q-card>
-                  <q-card-section class="row items-center q-pb-none">
+                  <q-card-section class="textsz2 row items-center q-pb-none">
                     <div class="text-h6">Об отправителе</div>
                     <q-space />
                     <q-btn icon="close" flat round dense v-close-popup />
                   </q-card-section>
 
-                  <q-card-section class="text-caption">
+                  <q-card-section class="text-caption textsz2">
                     Отправитель: {{sender}} <br>
                     Адресс: {{senderAdres}} <br>
                     Отправлено в {{timeSend}}
                   </q-card-section>
-                  <q-card-section class="text-caption">
+                  <q-card-section class="text-caption textsz2">
                     {{senderGroupPost}}
                   </q-card-section>
                 </q-card>
               </q-dialog>
-              <div class="full-width text-caption margine2">
+              <div class="full-width text-caption margine2 textsz2">
                 Получатель: {{name}} {{sorname}}
               </div>
-              <div class="full-width text-caption margine2">
+              <div class="full-width text-caption margine2 textsz2">
                 Кейс состояние: {{stageCase}}
               </div>
             </div>
             <div class="full-width text-caption margine2">
-              <q-btn flat size="14px" v-show="!isHistory" color="secondary" label="История действий с заказом" @click="isHistory = true"/>
+              <q-btn flat size="2.7vh" v-show="!isHistory" color="secondary" label="История действий с заказом" @click="isHistory = true"/>
               <span v-show="isHistory" v-for="(step, index) in steps" :key="step.id">
                 <div v-show="index < 4" class="full-width text-weight-medium">
                   {{ step.timeHistH }}:{{ step.timeHistM }} - {{ step.stageH }} <br>
                 </div>
               </span>
-              <q-btn size="14px" flat v-show="isHistory" color="secondary" label="Свернуть" @click="isHistory = false"/>
+              <q-btn size="3vh" flat v-show="isHistory" color="secondary" label="Свернуть" @click="isHistory = false"/>
             </div>
           </div>
         </div>
       </div>
       <div class="col bg-purple-2">
-        <div class="full-width text-h5 text-weight-bold text-left label1 text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ваш заказ</div>
+        <div class="full-width textsz3 text-weight-bold text-left label1 text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ваш заказ</div>
         <div class="row">
           <div class="col-4">
             <Product
@@ -302,44 +302,53 @@ export default {
 
 <style scoped>
   .progressBar1 {
-    size: 5 px;
+    size: 5 vh;
   }
   .ava1 {
-    margin: 9px;
+    margin: 1.8vh;
   }
   .leftMenu {
-    size: 150px;
+    size: 150vh;
   }
   .margine {
-    margin: 13px;
+    margin: 1vh;
   }
   .margine2 {
-    margin: 28px;
+    margin: 2.8vh;
   }
   .label1 {
-    margin-top: 50px;
+    margin-top: 4vh;
   }
   .cardCola {
-    height: 300px;
-    width: 600px;
+    height: 300vh;
+    width: 600vh;
   }
   .imgCola {
-    height: 75px;
-    width: 350px;
+    height: 75vh;
+    width: 350vh;
   }
   .imgNug {
-    height: 95px;
-    width: 385px;
+    height: 95vh;
+    width: 385vh;
   }
   .imgIceCream {
-    height: 95px;
-    width: 385px;
+    height: 95vh;
+    width: 385vh;
   }
   .size1 {
-    height: 100px;
-    width: 100px;
+    height: 100vh;
+    width: 100vh;
   }
   .margine3 {
-    margin: 5px;
+    margin: 0vh;
+  }
+  .textsz1 {
+    font-size: 3.5vh;
+  }
+  .textsz2 {
+    font-size: 2.7vh;
+  }
+  .textsz3 {
+    font-size: 5vh;
   }
 </style>
