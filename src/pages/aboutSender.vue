@@ -10,7 +10,7 @@
                 src="boxGRDark.png"
                 class="margin0"
               >
-                <h3 class="text-white">Заказать или доставить груз - Легко</h3>
+                <h3 class="text-white">Заказать или доставить груз - ЛЕГКО</h3>
               </q-parallax>
 
             </div>
@@ -33,6 +33,7 @@
               v-model="slide"
               :fullscreen.sync="fullscreen"
               infinite
+              class="bg-grey-9"
             >
               <q-carousel-slide :name="1" img-src="boxG.png" />
               <q-carousel-slide :name="2" img-src="boxGR.png" />
@@ -121,7 +122,7 @@
             <div class="col-8 full-height bg-grey9">
               <div class="q-pa-md">
                 <iframe width="712" height="401"
-                src="https://www.youtube.com/embed/7u9HUr5v3C4"
+                src="https://www.youtube.com/embed/qAeH7-_sYIk"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write;
                 encrypted-media; gyroscope; picture-in-picture"
@@ -168,7 +169,7 @@ export default {
     margin: 3vh;
   }
   .p0 {
-    border-radius: 0%;
+    border-radius: 5%;
     padding:2vh 2vh 2vh 2vh;
   }
   .p1 {
