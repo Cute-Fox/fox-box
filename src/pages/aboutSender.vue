@@ -115,9 +115,7 @@
                   Почему это отличный вариант?
                 </div>
                 <p class="p0 margin bg-white">
-                  Данный сервис удобен тем, что по доступной вам цене вы можете оформить бесплатную доставку,
-                  которая будет гарантировано привезена без повреждений
-                </p>
+                  Это отличный вариант, поскольку, используя наш сервис вы можете не беспокоиться о безопасности груза. Мы гарантируем качественную доставку груза в целости и сохранности. Это все благодаря нашей системе верификации, которую практически невозможно подделать и обойти. За счет этого мы можем спокойно ответить, что выбрав наш сервис для доставки груза, вы не будете беспокоиться о качестве обслуживания и безопасности вашего товара при транспортировке. </p>
               </div>
             <div class="col-8 full-height bg-grey9">
               <div class="q-pa-md">
@@ -129,8 +127,85 @@
                 allowfullscreen></iframe>
               </div>
             </div>
+            <div class="col-12 full-height bg-grey9">
+              <q-parallax
+                :height="650"
+                src="bo.png"
+                class="margin0"
+              >
+              <h3 class="text-white">Заработать на доставке грузов - ЕЩЁ ЛЕГЧЕ</h3>
+              </q-parallax>
+            </div>
+            <div class="col-4 full-height bg-white p2">
+              <h5> Как это будет происходить? </h5>
+              <p class="margin"> В приложении вам будет доступен список заказов с подробным их описанием.
+                В описании будет отображена фотография товара, растоние и место доставки, а также
+                минимальная цена для торгов. Еще рядом с заказом будет отображен необходимый уровень
+                вашего профиля для доставки данного груза. Далее вы ведете торги с другими курьерами
+                и если вы выйграли торг, то за вами закрепляется данный заказ
+              </p>
+            </div>
+            <div class="col-8 full-height bg-grey9">
+              <div class="q-pa-md">
+            <q-carousel
+              height="74vh"
+              swipeable
+              animated
+              arrows
+              v-model="slide"
+              :fullscreen.sync="fullscreen"
+              infinite
+              class="bg-grey-9"
+            >
+              <q-carousel-slide :name="2" img-src="https://retail-loyalty.org/upload/iblock/946/2e9f3f5e6adc6f8d7ca2c675879c9dc4.jpg" />
+              <q-carousel-slide :name="1" img-src="https://www.aurama.ru/imgs/kdpv.png" />
+              <template v-slot:control>
+                <q-carousel-control
+                  position="bottom-right"
+                  :offset="[18, 18]"
+                >
+                  <q-btn
+                    push round dense color="white" text-color="primary"
+                    :icon="fullscreen ? 'fullscreen_exit' : 'fullscreen'"
+                    @click="fullscreen = !fullscreen"
+                  />
+                </q-carousel-control>
+              </template>
+            </q-carousel>
+            </div>
+            </div>
+          <div class="col-4 full-height bg-white p2">
+              <h5> Как это будет происходить? </h5>
+              <p class="margin"> В приложении вам будет доступен список заказов с подробным их описанием.
+                В описании будет отображена фотография товара, растоние и место доставки, а также
+                минимальная цена для торгов. Еще рядом с заказом будет отображен необходимый уровень
+                вашего профиля для доставки данного груза. Далее вы ведете торги с другими курьерами
+                и если вы выйграли торг, то за вами закрепляется данный заказ
+              </p>
+          </div>
+            <!-- <div class="col-4 full-height bg-white">
+                <div class="text-h4">
+                  Как мне стать курьером?
+                </div>
+                <p> Все очень просто. Вам достаточно прийти на базу вместе с паспортом для того, чтобы
+                  вам выдаи кейм. Паспорт в данном случае нужен для закрепление его номера за вашим кейсом.
+                  Это будет служить гарантом его сохранности и того, что вы его вернете обратно </p>
+              </div> -->
+            <div class="col-8 full-height bg-grey9">
+              <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2739.6794209879467!2d-49.09198868600008!3d-21.805199985582902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDQ4JzE4LjciUyA0OcKwMDUnMjMuMyJX!5e1!3m2!1sru!2sru!4v1605858069907!5m2!1sru!2sru"
+              width="800vh"
+              height="450vh"
+              frameborder="0"
+              style="border:0;"
+              allowfullscreen=""
+              aria-hidden="false"
+              tabindex="0">
+              </iframe>
+            </div>
+          </div>
       </div>
-    </div>
+    <!-- </div> -->
   </q-layout>
 </template>
 
